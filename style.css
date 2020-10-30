@@ -1,67 +1,67 @@
 :root {
-    --base-size: 1em;
-    --cell-height: calc(var(--base-size) * 1.2);
-    --cell-width: calc(var(--base-size) * 9);
-    font-size: var(--base-size);
-    font-family: sans-serif;
+  --base-size: 1em;
+  --cell-height: calc(var(--base-size) * 1.2);
+  --cell-width: calc(var(--base-size) * 9);
+  font-size: var(--base-size);
+  font-family: sans-serif;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 fieldset {
-    border: 1px dotted gray;
-    margin-bottom: var(--base-size);
-    font-variant-caps: all-small-caps;
+  border: 1px dotted gray;
+  margin-bottom: var(--base-size);
+  font-variant-caps: all-small-caps;
 }
 
 fieldset label {
-    font-variant-caps: normal;
+  font-variant-caps: normal;
 }
 
 input {
-    margin-bottom: calc(var(--base-size) / 2);
+  margin-bottom: calc(var(--base-size) / 2);
 }
 
-button {
+/*button {
 
-}
+}*/
 
 .grid {
-    display: table;
-    border: 1px solid grey;
+  display: table;
+  border: 1px solid grey;
 }
 
 .column-headers {
-    display: flex;
+  display: flex;
 }
 
 .column-headers .cell {
-    background: lightskyblue;
-    font-weight: bold;
+  background: lightskyblue;
+  font-weight: bold;
 }
 
 .row {
-    display: flex;
+  display: flex;
 }
 
 .cell {
-    height: var(--cell-height);
-    width: var(--cell-width);
-    padding-left: calc(var(--base-size) / 5);
-    line-height: 1;
-    padding-top: 2px;
-    word-wrap: hidden;
-    overflow: hidden;
-    outline: 1px solid grey;
-    background: white;
+  height: var(--cell-height);
+  width: var(--cell-width);
+  padding-left: calc(var(--base-size) / 5);
+  line-height: 1;
+  padding-top: 2px;
+  word-wrap: hidden;
+  overflow: hidden;
+  outline: 1px solid grey;
+  background: white;
 }
 
 .row:hover .cell {
-    background: lightgray;
+  background: lightgray;
 }
 
 .row .cell:hover {
-    background: lightsteelblue;
+  background: lightsteelblue;
 }
