@@ -34,20 +34,53 @@ function getCellElements(currentRowElement) {
 //
 // You can, of course, remove any comments in this starter project once
 // you have read them, if you prefer.
+
+//Add a click event listener to the `replaceAllButton`.
 replaceAllButton.addEventListener("click", function () {
   console.log("button clicked");
-  console.log(findInput.value);
-  for (i = 0; i < rowElements.length; i++) {
-    let currentRowElements = getCellElements(rowElements[i]);
 
-    for (j = 0; j < currentRowElements.length; j++) {
-      if (currentRowElements[j].innerText.includes(findInput.value)) {
-        let letsReplaceThis = currentRowElements[j].innerText;
-        console.log(letsReplaceThis);
+  // On click but outside of a loop, assign the values of the two input textboxes.
+  const searchValue = findInput.value;
+  const replaceValue = replaceInput.value;
+  console.log(searchValue);
+  console.log(replaceValue);
+
+  // replace function separate from nested loops?
+  // dunno yet
+  // supposedly separating things out is part of best practices
+
+  // use innerHTML and the string method `replace()` to replace the search string with the replacement.
+  function myReplace(str, before, after) {
+    return str.replace(before, after);
+  }
+
+  // Write a loop which loops over the `rowElements` array.
+  // In all your loops, have distinct counters like 'i' or 'j'
+  for (i = 0; i < rowElements.length; i++) {
+    // Inside this loop, use the `getCellElements()` function
+    console.log(getCellElements(rowElements[i]));
+    // assign the resulting array of cell elements to a variable
+    let nestedCellArr = getCellElements(rowElements[i]);
+    // Write a nested loop which loops over the array of cell elements.
+    // In all your loops, have distinct counters like 'i' or 'j'
+    for (j = 0; j < nestedCellArr.length; j++) {
+      console.log(nestedCellArr[j]);
+      let ourCellElements = nestedCellArr[j];
+      // For each cell element, check if a cell contains the user-provided search string.
+      // Use the string method `includes()`.
+      if (ourCellElements.innerHTML.includes(searchValue)) {
         console.log(" A match was found!");
-        console.log(replaceInput.value);
-        letsReplaceThis.findInput.replace(replaceInput.value);
-        console.log(letsReplaceThis);
+        // calling the outer replace function which is utilizing the replace() method
+        // and assigning it to the cell
+        // I knew if i could get it working in console.log() that I was missing something simple lol
+        ourCellElements.innerHTML = myReplace(
+          ourCellElements.innerHTML,
+          searchValue,
+          replaceValue
+        );
+        console.log(
+          myReplace(ourCellElements.innerHTML, searchValue, replaceValue)
+        );
       }
     }
   }
