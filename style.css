@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 fieldset {
   border: 1px dotted gray;
   margin-bottom: var(--base-size);

@@ -35,6 +35,15 @@ function getCellElements(currentRowElement) {
 // You can, of course, remove any comments in this starter project once
 // you have read them, if you prefer.
 
+// replace function separate from event listeners and nested loops?
+// dunno yet
+// supposedly separating things out is part of best practices
+
+// use innerHTML and the string method `replace()` to replace the search string with the replacement.
+function myReplace(str, before, after) {
+  return str.replace(before, after);
+}
+
 //Add a click event listener to the `replaceAllButton`.
 replaceAllButton.addEventListener("click", function () {
   console.log("button clicked");
@@ -45,15 +54,7 @@ replaceAllButton.addEventListener("click", function () {
   console.log(searchValue);
   console.log(replaceValue);
 
-  // replace function separate from nested loops?
-  // dunno yet
-  // supposedly separating things out is part of best practices
-
-  // use innerHTML and the string method `replace()` to replace the search string with the replacement.
-  function myReplace(str, before, after) {
-    return str.replace(before, after);
-  }
-
+  let itemsReplaced = 0;
   // Write a loop which loops over the `rowElements` array.
   // In all your loops, have distinct counters like 'i' or 'j'
   for (i = 0; i < rowElements.length; i++) {
@@ -81,7 +82,72 @@ replaceAllButton.addEventListener("click", function () {
         console.log(
           myReplace(ourCellElements.innerHTML, searchValue, replaceValue)
         );
+
+        itemsReplaced++;
       }
     }
   }
+
+  // Stretch 1 Display for the user the number of items replaced during the most recent replace button press
+  let paragraphElement = document.createElement("p");
+  let itemsReplacedElement = document.createTextNode(
+    itemsReplaced +
+      " instances of " +
+      searchValue +
+      " have been replaced with  " +
+      replaceValue +
+      "."
+  );
+  paragraphElement.appendChild(itemsReplacedElement);
+  bodySectionElement = document.querySelector("body");
+  bodySectionElement.append(paragraphElement);
 });
+
+//  Stretch 2
+let replaceOnceButtonElement = document.createElement("button");
+replaceOnceButtonElement.className = "replace-once-button";
+replaceOnceButtonElement.id = "button-two";
+replaceOnceButtonElement.append("Replace Once");
+
+const replaceOnceButton = document.querySelector(".replace-once-button");
+replaceOnceButtonElement.addEventListener("click", function () {
+  console.log("button clicked");
+  const searchValue = findInput.value;
+  const replaceValue = replaceInput.value;
+  console.log(searchValue);
+  console.log(replaceValue);
+  // Write a loop which loops over the `rowElements` array.
+  // In all your loops, have distinct counters like 'i' or 'j'
+  for (i = 0; i < rowElements.length; i++) {
+    // Inside this loop, use the `getCellElements()` function
+    console.log(getCellElements(rowElements[i]));
+    // assign the resulting array of cell elements to a variable
+    let nestedCellArr = getCellElements(rowElements[i]);
+    // Write a nested loop which loops over the array of cell elements.
+    // In all your loops, have distinct counters like 'i' or 'j'
+    for (j = 0; j < nestedCellArr.length; j++) {
+      console.log(nestedCellArr[j]);
+      let ourCellElements = nestedCellArr[j];
+      // For each cell element, check if a cell contains the user-provided search string.
+      // Use the string method `includes()`.
+      if (ourCellElements.innerHTML.includes(searchValue)) {
+        console.log(" A match was found!");
+        // calling the outer replace function which is utilizing the replace() method
+        ourCellElements.innerHTML = myReplace(
+          ourCellElements.innerHTML,
+          searchValue,
+          replaceValue
+        );
+        console.log(
+          myReplace(ourCellElements.innerHTML, searchValue, replaceValue)
+        );
+      } else {
+        break;
+      }
+    }
+    break;
+  }
+});
+
+fieldsetSectionElement = document.querySelector("fieldset");
+fieldsetSectionElement.append(replaceOnceButtonElement);
