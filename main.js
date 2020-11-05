@@ -103,7 +103,7 @@ replaceAllButton.addEventListener("click", function () {
   bodySectionElement.append(paragraphElement);
 });
 
-//  Stretch 2
+//  Stretch 2 create a "Replace Once" button which only replaces the first occurrence of the found search string.
 let replaceOnceButtonElement = document.createElement("button");
 replaceOnceButtonElement.className = "replace-once-button";
 replaceOnceButtonElement.id = "button-two";
@@ -151,3 +151,33 @@ replaceOnceButtonElement.addEventListener("click", function () {
 
 fieldsetSectionElement = document.querySelector("fieldset");
 fieldsetSectionElement.append(replaceOnceButtonElement);
+
+// not part of Stretch just figured id throw this in
+let resetButtonElement = document.createElement("button");
+resetButtonElement.className = "reset-button";
+resetButtonElement.id = "button-three";
+resetButtonElement.append("Reset Button");
+
+resetButtonElement.addEventListener("click", function () {
+  //  On click, reset the page.
+  location.reload();
+  return false;
+});
+
+fieldsetSectionElement = document.querySelector("fieldset");
+fieldsetSectionElement.append(resetButtonElement);
+
+// Stretch 3 Add a checkbox which toggles case-insensitive searches.
+let checkBoxElement = document.createElement("input");
+checkBoxElement.type = "checkbox";
+checkBoxElement.className = "case-insensitive-searches-checkbox";
+checkBoxElement.id = "checkbox-one";
+let paragraphElement = document.createElement("p");
+let checkBoxTextElement = document.createTextNode(
+  "Case Insensitive Searches: "
+);
+paragraphElement.appendChild(checkBoxTextElement);
+
+bodySectionElement = document.querySelector("body");
+bodySectionElement.append(checkBoxElement);
+bodySectionElement.append(paragraphElement);

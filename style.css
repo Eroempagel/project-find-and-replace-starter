@@ -29,9 +29,19 @@ input {
   margin-bottom: calc(var(--base-size) / 2);
 }
 
-/*button {
+#checkbox-one {
+  margin-bottom: 45px;
+  display: flex;
+  /*flex-direction: row;*/
+}
 
-}*/
+button {
+  margin: 5px;
+}
+
+#button-three {
+  margin-left: 10px;
+}
 
 .grid {
   display: table;
